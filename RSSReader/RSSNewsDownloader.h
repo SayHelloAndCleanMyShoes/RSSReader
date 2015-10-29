@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface RSSNewsDownloader : NSObject
 
+typedef void(^RSSNewsDownloaderBlock)(NSArray *rssArrayToParse, NSError *error);
+
+@property (strong, nonatomic) NSMutableArray* rssList;
+
++ (instancetype)sharedDownloader;
+-(void) downloadRSSFromURL:(NSURL*) URL withCompletion:(RSSNewsDownloaderBlock)completionBlock;
 @end
