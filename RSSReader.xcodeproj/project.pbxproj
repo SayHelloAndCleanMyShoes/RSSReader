@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		B82CC25F1BE21DF9009CEED7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B82CC25E1BE21DF9009CEED7 /* main.m */; };
 		B82CC2621BE21DF9009CEED7 /* RSSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B82CC2611BE21DF9009CEED7 /* RSSAppDelegate.m */; };
-		B82CC2651BE21DF9009CEED7 /* RSSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B82CC2641BE21DF9009CEED7 /* RSSMainViewController.m */; };
+		B82CC2651BE21DF9009CEED7 /* RSSMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B82CC2641BE21DF9009CEED7 /* RSSMainTableViewController.m */; };
 		B82CC2681BE21DF9009CEED7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B82CC2661BE21DF9009CEED7 /* Main.storyboard */; };
 		B82CC26A1BE21DF9009CEED7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B82CC2691BE21DF9009CEED7 /* Assets.xcassets */; };
 		B82CC26D1BE21DF9009CEED7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B82CC26B1BE21DF9009CEED7 /* LaunchScreen.storyboard */; };
@@ -42,8 +42,8 @@
 		B82CC25E1BE21DF9009CEED7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B82CC2601BE21DF9009CEED7 /* RSSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSAppDelegate.h; sourceTree = "<group>"; };
 		B82CC2611BE21DF9009CEED7 /* RSSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSAppDelegate.m; sourceTree = "<group>"; };
-		B82CC2631BE21DF9009CEED7 /* RSSMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSMainViewController.h; sourceTree = "<group>"; };
-		B82CC2641BE21DF9009CEED7 /* RSSMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSMainViewController.m; sourceTree = "<group>"; };
+		B82CC2631BE21DF9009CEED7 /* RSSMainTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSMainTableViewController.h; sourceTree = "<group>"; };
+		B82CC2641BE21DF9009CEED7 /* RSSMainTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSMainTableViewController.m; sourceTree = "<group>"; };
 		B82CC2671BE21DF9009CEED7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B82CC2691BE21DF9009CEED7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B82CC26C1BE21DF9009CEED7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -181,8 +181,8 @@
 		B82CC29C1BE22826009CEED7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B82CC2631BE21DF9009CEED7 /* RSSMainViewController.h */,
-				B82CC2641BE21DF9009CEED7 /* RSSMainViewController.m */,
+				B82CC2631BE21DF9009CEED7 /* RSSMainTableViewController.h */,
+				B82CC2641BE21DF9009CEED7 /* RSSMainTableViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -320,7 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B82CC2651BE21DF9009CEED7 /* RSSMainViewController.m in Sources */,
+				B82CC2651BE21DF9009CEED7 /* RSSMainTableViewController.m in Sources */,
 				B82CC2621BE21DF9009CEED7 /* RSSAppDelegate.m in Sources */,
 				B82CC2981BE227E5009CEED7 /* RSSNewsDownloader.m in Sources */,
 				B82CC2951BE227C1009CEED7 /* RSSParseOperation.m in Sources */,

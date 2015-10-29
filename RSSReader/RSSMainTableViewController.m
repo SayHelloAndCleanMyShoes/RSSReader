@@ -6,13 +6,13 @@
 //  Copyright © 2015 Dmitriy Kazhura. All rights reserved.
 //
 
-#import "RSSMainViewController.h"
+#import "RSSMainTableViewController.h"
 
-@interface RSSMainViewController ()
+@interface RSSMainTableViewController ()
 
 @end
 
-@implementation RSSMainViewController
+@implementation RSSMainTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
