@@ -10,4 +10,16 @@
 
 @interface RSSNewsModel : NSObject
 
+@property (nonatomic, strong) NSURL* newsImageURL;
+@property (nonatomic, strong) NSURL* newsLink;
+@property (nonatomic, strong) NSString* newsTitle;
+@property (nonatomic, strong) NSString* newsDescription;
+@property (nonatomic, strong) NSString* newsAuthor;
+@property (nonatomic, strong) NSString* newsOrigin;
+@property (nonatomic, strong) NSDate* newsDate;
+@property (nonatomic, assign) NSInteger newsImageWidth;
+@property (nonatomic, assign) NSInteger newsImageHeight;
+
+
+
 @end

@@ -18,21 +18,20 @@ dispatch_queue_t downloadQueue;
 
 @implementation RSSNewsDownloader
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        downloadQueue = dispatch_queue_create("Data Download Queue", 0);
-        self.manager = [AFHTTPRequestOperationManager manager];
-        self.manager.operationQueue.maxConcurrentOperationCount = 2;
-    }
-    return self;
+#pragma mark - Public
+
++ (instancetype)sharedDownloader {
+    static RSSNewsDownloader *sharedDownloader = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedDownloader = [[self alloc] init];
+    });
+    return sharedDownloader;
 }
 
 -(void) downloadRSSFromURL:(NSURL*) URL withCompletion:(RSSNewsDownloaderBlock)completionBlock{
     if (!self.rssList)
          self.rssList = [[NSMutableArray alloc] init];
-    
     URL = [NSURL URLWithString:@"http://static.feed.rbc.ru/rbc/internal/rss.rbc.ru/rbc.ru/mainnews.rss"];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:URL];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
@@ -46,6 +45,7 @@ dispatch_queue_t downloadQueue;
             });
         } else {
             [weakSelf.rssList addObject: @0];
+            // If download fails inspite of reason, we add 0 to array of downloaded objects
         }
         }
         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -57,13 +57,17 @@ dispatch_queue_t downloadQueue;
     [self.manager.operationQueue addOperation:operation];
 }
 
-    
-+ (instancetype)sharedDownloader {
-    static RSSNewsDownloader *sharedDownloader = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedDownloader = [[self alloc] init];
-    });
-    return sharedDownloader;
+#pragma mark - Private
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        downloadQueue = dispatch_queue_create("Data Download Queue", 0);
+        self.manager = [AFHTTPRequestOperationManager manager];
+        self.manager.operationQueue.maxConcurrentOperationCount = 2;
+    }
+    return self;
 }
+
 @end

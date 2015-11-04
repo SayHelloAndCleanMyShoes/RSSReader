@@ -13,7 +13,7 @@
 
 typedef void(^RSSNewsDownloaderBlock)(NSArray *rssArrayToParse, NSError *error);
 
-@property (strong, nonatomic) NSMutableArray* rssList;
+@property (nonatomic, strong) NSMutableArray* rssList;
 
 + (instancetype)sharedDownloader;
 -(void) downloadRSSFromURL:(NSURL*) URL withCompletion:(RSSNewsDownloaderBlock)completionBlock;

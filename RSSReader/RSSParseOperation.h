@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+extern NSString *kAddNewsNotificationName;
+extern NSString *kNewsResultsKey;
+extern NSString *kNewsErrorNotificationName;
+extern NSString *kNewsMessageErrorKey;
 
-@interface RSSParseOperation : NSObject
+@interface RSSParseOperation : NSOperation
+
+@property (copy, readonly) NSData *rssData;
+
+- (id)initWithData:(NSData *)parseData;
 
 @end
