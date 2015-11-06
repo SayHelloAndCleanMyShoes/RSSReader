@@ -9,6 +9,8 @@
 #import "RSSMainTableViewController.h"
 #import "RSSNewsDownloader.h"
 #import "RSSParseOperation.h"
+#import "RSSNewsTableViewCell.h"
+#import "RSSNewsModel.h"
 
 @interface RSSMainTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -104,10 +106,14 @@
     return [[RSSNewsDownloader sharedDownloader].rssList count];
 }
 
-//-(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    static NSString *newsCellID = @"NewsCellID";
-//    
-//}
+-(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *newsCellID = @"NewsCellID";
+    RSSNewsTableViewCell *cell = (RSSNewsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:newsCellID];
+    
+    RSSNewsModel *newsModel = ([RSSNewsDownloader sharedDownloader].rssList)[indexPath.row]; // Можно ли использовать?
+    [cell configureWithNews:newsModel];
+    return cell;
+}
 
 
 
