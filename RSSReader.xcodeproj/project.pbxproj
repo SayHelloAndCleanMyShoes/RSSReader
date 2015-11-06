@@ -18,6 +18,7 @@
 		B82CC2921BE22312009CEED7 /* RSSNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B82CC2911BE22312009CEED7 /* RSSNewsModel.m */; settings = {ASSET_TAGS = (); }; };
 		B82CC2951BE227C1009CEED7 /* RSSParseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B82CC2941BE227C1009CEED7 /* RSSParseOperation.m */; settings = {ASSET_TAGS = (); }; };
 		B82CC2981BE227E5009CEED7 /* RSSNewsDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = B82CC2971BE227E5009CEED7 /* RSSNewsDownloader.m */; settings = {ASSET_TAGS = (); }; };
+		B84363151BECACE400C30E54 /* RSSNewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B84363141BECACE300C30E54 /* RSSNewsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		FFD5CAB7894A5EC866A460DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D193DA52EA4305C59B9C98 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,8 @@
 		B82CC2941BE227C1009CEED7 /* RSSParseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSParseOperation.m; sourceTree = "<group>"; };
 		B82CC2961BE227E5009CEED7 /* RSSNewsDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSNewsDownloader.h; sourceTree = "<group>"; };
 		B82CC2971BE227E5009CEED7 /* RSSNewsDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSNewsDownloader.m; sourceTree = "<group>"; };
+		B84363131BECACE300C30E54 /* RSSNewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSNewsTableViewCell.h; sourceTree = "<group>"; };
+		B84363141BECACE300C30E54 /* RSSNewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSNewsTableViewCell.m; sourceTree = "<group>"; };
 		C49E44F32FEE22669B07E86D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F26E89B1B69A7DB413D0EEB2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,7 +131,7 @@
 			children = (
 				B82CC2601BE21DF9009CEED7 /* RSSAppDelegate.h */,
 				B82CC2611BE21DF9009CEED7 /* RSSAppDelegate.m */,
-				B82CC29C1BE22826009CEED7 /* ViewController */,
+				B82CC29C1BE22826009CEED7 /* Table View */,
 				B82CC2991BE227FC009CEED7 /* Downloader */,
 				B82CC29A1BE22803009CEED7 /* Model */,
 				B82CC29B1BE2280A009CEED7 /* Parsing */,
@@ -194,13 +197,23 @@
 			name = Parsing;
 			sourceTree = "<group>";
 		};
-		B82CC29C1BE22826009CEED7 /* ViewController */ = {
+		B82CC29C1BE22826009CEED7 /* Table View */ = {
 			isa = PBXGroup;
 			children = (
 				B82CC2631BE21DF9009CEED7 /* RSSMainTableViewController.h */,
 				B82CC2641BE21DF9009CEED7 /* RSSMainTableViewController.m */,
+				B84363161BECAD0100C30E54 /* Table View Cell */,
 			);
-			name = ViewController;
+			name = "Table View";
+			sourceTree = "<group>";
+		};
+		B84363161BECAD0100C30E54 /* Table View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B84363131BECACE300C30E54 /* RSSNewsTableViewCell.h */,
+				B84363141BECACE300C30E54 /* RSSNewsTableViewCell.m */,
+			);
+			name = "Table View Cell";
 			sourceTree = "<group>";
 		};
 		FE127FB396C54939918F024F /* Frameworks */ = {
@@ -379,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B84363151BECACE400C30E54 /* RSSNewsTableViewCell.m in Sources */,
 				B82CC2651BE21DF9009CEED7 /* RSSMainTableViewController.m in Sources */,
 				B82CC2621BE21DF9009CEED7 /* RSSAppDelegate.m in Sources */,
 				B82CC2981BE227E5009CEED7 /* RSSNewsDownloader.m in Sources */,

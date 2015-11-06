@@ -5,7 +5,7 @@
 //  Created by Dmitriy Kazhura on 29/10/15.
 //  Copyright © 2015 Dmitriy Kazhura. All rights reserved.
 //
-// NSNotification name for sending earthquake data back to the app delegate
+// NSNotification name for sending news data back to the app delegate
 
 #import "RSSParseOperation.h"
 #import "RSSNewsModel.h"
@@ -60,7 +60,9 @@ NSString *kNewsMessageErrorKey = @"NewsMsgErrorKey";
     [parser setDelegate:self];
     [parser parse];
     if ([self.currentParseBatch count] > 0) {
-        [self performSelectorOnMainThread:@selector(addNewsToList:) withObject:self.currentParseBatch waitUntilDone:NO];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self addNewsToList:self.currentParseBatch];
+        });
     }
 }
 
@@ -90,7 +92,8 @@ static NSString * const kEnclosureElementName = @"enclosure";
         self.currentNewsObject = [[RSSNewsModel alloc] init];
     else if ([elementName isEqualToString:kEnclosureElementName]) {
         // Fullfilling image properties
-        self.currentNewsObject.newsImageURL = [attributeDict valueForKey:@"url"];
+       
+        [RSSNewsModel sharedModel].newsImageURL = [attributeDict valueForKey:@"url"];
         self.currentNewsObject.newsImageWidth = [[attributeDict valueForKey:@"width"] integerValue];
         self.currentNewsObject.newsImageHeight = [[attributeDict valueForKey:@"height"] integerValue];
         

@@ -11,6 +11,7 @@
 @interface RSSNewsModel : NSObject
 
 @property (nonatomic, strong) NSURL* newsImageURL;
+@property (nonatomic, strong) NSData* newsImageData;
 @property (nonatomic, strong) NSURL* newsLink;
 @property (nonatomic, strong) NSString* newsTitle;
 @property (nonatomic, strong) NSString* newsDescription;
@@ -21,5 +22,6 @@
 @property (nonatomic, assign) NSInteger newsImageHeight;
 
 
++(instancetype) sharedModel;
 
 @end

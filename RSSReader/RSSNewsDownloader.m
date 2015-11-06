@@ -7,6 +7,7 @@
 //
 
 #import "RSSNewsDownloader.h"
+#import "RSSNewsModel.h"
 #import "AFNetworking.h"
 
 @interface RSSNewsDownloader() {
@@ -29,25 +30,24 @@ dispatch_queue_t downloadQueue;
     return sharedDownloader;
 }
 
--(void) downloadRSSFromURL:(NSURL*) URL withCompletion:(RSSNewsDownloaderBlock)completionBlock{
+-(void) downloadRSSwithCompletion:(RSSNewsDownloaderBlock)completionBlock{
     if (!self.rssList)
-         self.rssList = [[NSMutableArray alloc] init];
-    URL = [NSURL URLWithString:@"http://static.feed.rbc.ru/rbc/internal/rss.rbc.ru/rbc.ru/mainnews.rss"];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:URL];
+        self.rssList = [[NSMutableArray alloc] init];
+    
+    self.urlToDownload = [NSURL URLWithString:@"http://static.feed.rbc.ru/rbc/internal/rss.rbc.ru/rbc.ru/mainnews.rss"];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:self.urlToDownload];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
     __weak typeof(self) weakSelf = self;
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, NSData* responseData) {
-        NSData *rssData = [NSData dataWithContentsOfURL:URL];
+        NSData *rssData = [NSData dataWithContentsOfURL:self.urlToDownload];
+        [self downloadImageData];
         if (rssData) {
             dispatch_async(dispatch_get_main_queue(), ^{
+                completionBlock(rssData, nil);
                 [weakSelf.rssList addObject:rssData];
-                completionBlock(weakSelf.rssList, nil);
             });
-        } else {
-            [weakSelf.rssList addObject: @0];
-            // If download fails inspite of reason, we add 0 to array of downloaded objects
         }
-        }
+    }
         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 completionBlock(nil, error);
@@ -57,7 +57,15 @@ dispatch_queue_t downloadQueue;
     [self.manager.operationQueue addOperation:operation];
 }
 
+
+
 #pragma mark - Private
+
+-(void) downloadImageData {
+    dispatch_async(downloadQueue, ^{
+        [RSSNewsModel sharedModel].newsImageData = [[NSData alloc] initWithContentsOfURL:[RSSNewsModel sharedModel].newsImageURL];
+    });
+}
 
 - (instancetype)init
 {

@@ -10,4 +10,14 @@
 
 @implementation RSSNewsModel
 
++(id) sharedModel {
+    static RSSNewsModel *sharedModel = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedModel = [[self alloc] init];
+    });
+    return sharedModel;
+}
+
+
 @end

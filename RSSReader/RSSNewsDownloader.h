@@ -11,10 +11,13 @@
 
 @interface RSSNewsDownloader : NSObject
 
-typedef void(^RSSNewsDownloaderBlock)(NSArray *rssArrayToParse, NSError *error);
+typedef void(^RSSNewsDownloaderBlock)(NSData *rssDataToParse, NSError *error);
 
 @property (nonatomic, strong) NSMutableArray* rssList;
+@property (nonatomic, strong) NSURL* urlToDownload;
 
 + (instancetype)sharedDownloader;
--(void) downloadRSSFromURL:(NSURL*) URL withCompletion:(RSSNewsDownloaderBlock)completionBlock;
+
+-(void) downloadRSSwithCompletion:(RSSNewsDownloaderBlock)completionBlock;
+
 @end
